@@ -18,6 +18,12 @@ To use the `SeleniumAPI` class, you need to have Python 3.x and the necessary de
 
 2. Make sure your system supports creating chrome instances. 
 
+4. Copy the file SeleniumAPI to the directory of your project.
+
+5. Import the class
+
+`from SeleniumAPI import SeleniumAPI`
+
 ## Usage
 
 To use the `SeleniumAPI` class, follow these steps:
@@ -47,7 +53,6 @@ response = api.call(url, method, headers=headers)
 ## ToDO
 - Handling non-json responses
 - Test for DEL and PUT requests.
-
 
 
 
