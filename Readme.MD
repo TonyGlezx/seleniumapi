@@ -66,6 +66,9 @@ response = api.call(url, method, headers=headers)
 ## ToDO
 - Handling non-json responses
 - Test case for DEL and PUT requests.
+- Better cookies handling
+- Debug options
+- 
 
 ## Testing
 
