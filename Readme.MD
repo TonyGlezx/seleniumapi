@@ -68,7 +68,7 @@ response = api.call(url, method, headers=headers)
 - Test case for DEL and PUT requests.
 - Better cookies handling
 - Debug options
-- 
+- Timeout management
 
 ## Testing
 
