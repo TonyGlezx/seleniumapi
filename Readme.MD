@@ -57,12 +57,17 @@ response = api.call(url, method, headers=headers)
 `api.quit()`
 
 ## Known issues
-- Error handling when POST call with missing payload returns a bad response.
-- Tests for batch jobs and concurrency didn't pass.
+- Error handling when a POST call with missing payload returns a bad response. Didn't passed the test. 
+- Tests for retry logic, long running operation and concurrency didn't pass.
 
 ## ToDO
 - Handling non-json responses
 - Test for DEL and PUT requests.
 
+## Testing
+
+The SeleniumAPI got 18 different testing points to ensure its strenght. To test it, clone this directory and then execute:
+
+`python3 testing.py`
 
 
