@@ -47,6 +47,7 @@ class TestSeleniumAPI(unittest.TestCase):
         headers = {'Content-Type': 'application/json'}
         payload = {'name': 'John Doe', 'job': 'Software Engineer'}
         response = asyncio.run(self.selenium_api.call(url, method, headers, payload))
+        response = json.dumps(response)
         self.assertIsNotNone(response)        
         self.assertIn('id', response)
 
