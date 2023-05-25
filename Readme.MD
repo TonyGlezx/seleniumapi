@@ -18,7 +18,8 @@ To use the `SeleniumAPI` class, you need to have Python 3.x and the necessary de
 
 2. Make sure your system supports creating Selenium chrome instances. The following code should print the title of any working website. Change the website example.com to a website you can use to test it. 
 
-```from selenium import webdriver
+```
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 options = Options()
