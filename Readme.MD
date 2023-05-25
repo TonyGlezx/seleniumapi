@@ -30,7 +30,7 @@ driver.get("https://www.example.com")
 print(driver.title)
 ```
 
-4. Copy the file SeleniumAPI to the directory of your project.
+4. Copy the file SeleniumAPI.py file to the directory of your project.
 
 5. Import the class in your project.
 
