@@ -56,6 +56,7 @@ response = api.call(url, method, headers=headers)
 3. Handle the API response according to your requirements.
 
 4. Quit the SeleniumAPI instance when done:
+5. 
 `api.quit()`
 
 ## Known issues
