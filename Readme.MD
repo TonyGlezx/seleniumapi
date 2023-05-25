@@ -16,9 +16,7 @@ To use the `SeleniumAPI` class, you need to have Python 3.x and the necessary de
 1. Install the required packages using pip:
 `pip install selenium`
 
-2. Download the appropriate Chrome WebDriver for your operating system from the official Selenium website: [Chrome WebDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads).
-
-3. Extract the WebDriver executable and make sure it is accessible in your system's `PATH`.
+2. Make sure your system supports creating chrome instances. 
 
 ## Usage
 
@@ -42,11 +40,11 @@ response = api.call(url, method, headers=headers)
 4. Quit the SeleniumAPI instance when done:
 `api.quit()`
 
-##Known issues
+## Known issues
 - Error handling when POST call with missing payload returns a bad response.
 - Tests for batch jobs and concurrency didn't pass.
 
-##ToDO
+## ToDO
 - Handling non-json responses
 - Test for DEL and PUT requests.
 
