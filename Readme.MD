@@ -30,7 +30,7 @@ print(driver.title)
 
 4. Copy the file SeleniumAPI to the directory of your project.
 
-5. Import the class
+5. Import the class in your project.
 
 `from SeleniumAPI import SeleniumAPI`
 
