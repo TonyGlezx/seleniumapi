@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: SeleniumAPI
+Version: 0.9
+Summary: Perform API calls with a selenium driver as the middleman
+Author: Tony Gonzalez
+Author-email: economiaug@gmail.com

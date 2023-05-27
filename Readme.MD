@@ -1,79 +1,122 @@
 # SeleniumAPI
 
-The `SeleniumAPI` class provides a wrapper for interacting with web APIs using Selenium and the Chrome WebDriver. It enables making asynchronous API calls and includes a rate limit mechanism to ensure requests are made within specified limits.
+Welcome to SeleniumAPI, a streamlined utility for executing API calls directly from a Selenium driver. Designed with the needs of developers in mind, SeleniumAPI provides a solution for enhancing API interactions within a browser context.
 
-## Features
+Discover the unique benefits and innovative applications of SeleniumAPI:
 
-- Asynchronous API calls using `XMLHttpRequest` in the browser context.
-- Automatic handling of request headers, payload, and response handling.
-- Rate limit enforcement to prevent exceeding a specified number of requests within a specific time frame.
-- Chrome WebDriver integration for automated browser interactions.
+**1. Advanced Website Testing & Validation**
+
+SeleniumAPI allows you to make API calls on-the-go during your Selenium test sessions. This functionality provides the ability to cross-verify server responses with website UI, elevating the accuracy of your end-to-end testing.
+
+**2. Comprehensive User Experience Simulation**
+
+Recreate detailed user interactions that integrate UI manipulation and API calls. SeleniumAPI provides an accurate representation of user-triggered API calls, generating realistic data for improved UX analysis.
+
+**3. Streamlined Automation & Web Scraping**
+
+Enhance your data extraction processes by reaching application-specific data, usually hidden behind API calls, directly from your Selenium driver. Broaden the scope of your web scraping tasks by accessing dynamic data that might be unavailable through the page source.
+
+**4. Optimal Proxy Usage**
+
+Leverage your Selenium WebDriver's proxy settings during API interactions. This feature proves particularly useful for maintaining IP rotation during extensive web scraping operations or managing region-specific API responses.
+
+**5. Intelligent Rate Limiting Management**
+
+SeleniumAPI facilitates the handling of rate-limited APIs within the browsing context. By interspersing API requests with regular browser activity, it offers a sophisticated approach to managing request quotas.
+
+SeleniumAPI seeks to redefine the boundaries of Selenium and API interaction by offering a solution tailored to the needs of today's developers. Step forward into a more dynamic browsing experience with SeleniumAPI.
+
+# SeleniumAPI Installation Guide
+
+Follow these simple steps to install SeleniumAPI and start executing API calls directly from a Selenium driver:
+
+## Prerequisites
+
+- [Python](https://www.python.org/downloads/) (version 3.6 or higher)
+- [pip](https://pip.pypa.io/en/stable/installation/)
 
 ## Installation
 
-To use the `SeleniumAPI` class, you need to have Python 3.x and the necessary dependencies installed. Follow these steps:
+1. **Clone the Repository**
 
-1. Install the required packages using pip:
-`pip install selenium`
+    ```bash
+    git clone https://github.com/TonyGlezx/seleniumapi
+    ```
 
-2. Make sure your system supports creating Selenium chrome instances. The following code should print the title of any working website. Change the website example.com to a website you can use to test it. 
+2. **Navigate to the Project Directory**
 
+    ```bash
+    cd seleniumapi
+    ```
+
+3. **Create a Virtual Environment (Optional but Recommended)**
+
+    ```bash
+    python3 -m venv .venv
+    source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
+    ```
+
+4. **Install the Package**
+
+    ```bash
+    pip install .
+    ```
+
+Now, you're ready to use SeleniumAPI in your projects!
+
+To import and use the `SeleniumAPI` class in your own scripts, use:
+
+```python
+from SeleniumAPI import SeleniumAPI
 ```
+
+# Examples of SeleniumAPI Usage
+
+The following examples demonstrate some of the innovative ways you can leverage SeleniumAPI in your projects:
+
+## Example 1: Real-Time Website Testing & Validation
+
+You can use SeleniumAPI to make API calls while navigating a website, and cross-check the server's responses against the UI elements:
+
+```python
+from SeleniumAPI import SeleniumAPI
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 
-options = Options()
-options.add_argument("--headless")
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Firefox()
+api = SeleniumAPI(driver)
+
+response = api.call("https://api.example.com/data", method="GET")
+
+# Now, compare the response with a UI element
+element = driver.find_element_by_id("data-element")
+assert element.text == response["data"]
+```
+### Example 2: User Experience Simulation
+
+Perform detailed user interaction simulations that combine UI manipulation and API calls. Accurately mimic user-triggered API calls and collect user behavior data for UX analysis. Here's a simple demonstration of how you can achieve this with SeleniumAPI:
+
+```python
+from SeleniumAPI import SeleniumAPI
+from selenium import webdriver
+
+driver = webdriver.Firefox()
+api = SeleniumAPI(driver)
+
+# Navigate to the site and simulate user behavior
 driver.get("https://www.example.com")
+driver.find_element_by_id('submit_button').click()
 
-print(driver.title)
+# Perform the API call and collect data for UX analysis
+response = api.call("https://api.example.com", method="POST", payload={"user_action": "click"})
 ```
 
-4. Copy the file SeleniumAPI.py file to the directory of your project.
-
-5. Import the class in your project.
-
-`from SeleniumAPI import SeleniumAPI`
-
-## Usage
-
-To use the `SeleniumAPI` class, follow these steps:
-
-1. Create an instance of the SeleniumAPI class, providing the login URL, main URL, and optionally the path to a cookies file:
-
-`api = SeleniumAPI(login_url='https://example.com/login', main_url='https://example.com/main', cookies_file='cookies.pkl')`
-
-2. Use the call method to make API requests:
-
-```
-url = 'https://example.com/api/endpoint'
-method = 'GET'
-headers = {'Content-Type': 'application/json'}
-response = api.call(url, method, headers=headers)
-```
-
-3. Handle the API response according to your requirements.
-
-4. Quit the SeleniumAPI instance when done:
-
-`api.quit()`
-
-## Known issues
-- Error handling when a POST call with missing payload returns a bad response. Didn't passed the test. 
-- Tests for retry logic, long running operation and concurrency didn't pass.
-
-## ToDO
-- Handling non-json responses
-- Test case for DEL and PUT requests.
-- Better cookies handling
-- Debug options
+## ToDo
+- Handling non-json responses better
+- Test case
+- More Debug options
 - Timeout management
-
-## Testing
-
-The SeleniumAPI got 18 different testing points to ensure its strenght. To test it, clone this directory and then execute:
-
-`python3 testing.py`
-
-
+- Improve performance with retry logic, long running operations and concurrency
+- Return the full xhr object no matter the server response. Make it optional.
+ 
+## Known issues
+- Handle bad responses from POST calls with missing or malformed payloads. 
